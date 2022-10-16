@@ -5,7 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/SceneLevel/MainMenu.unity
+    guid: 65e4e868f3e44c940b95690d77241dab
+  - enabled: 1
+    path: Assets/SceneLevel/Level1-Sumatra.unity
+    guid: 811a930c23a570447b938ebbf258c5c4
+  - enabled: 1
+    path: Assets/SceneLevel/Level2-Jawa.unity
+    guid: d841dc5149a139b4cab9f9c4d2478c70
+  - enabled: 1
+    path: Assets/SceneLevel/Level3-Kalimantan.unity
+    guid: 6e4b193b8fce2a84fba0ad0794e97d2e
+  - enabled: 1
+    path: Assets/SceneLevel/Level4-Sulawesi.unity
+    guid: 0dc93cfd6cac63b498c7d3e6f6831fa5
+  - enabled: 1
+    path: Assets/SceneLevel/Level5-Papua.unity
+    guid: 51b1c2ee3e40c584fa0ec51c45af5491
   m_configObjects: {}
