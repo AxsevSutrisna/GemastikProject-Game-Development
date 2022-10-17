@@ -11,6 +11,8 @@ TagManager:
   - Ground
   - Water
   - UI
+  - Decor
+  - Ground
   - 
   - 
   - 
@@ -23,9 +25,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Player
   - 
   - 
   - 
