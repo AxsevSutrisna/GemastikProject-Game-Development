@@ -6,6 +6,8 @@ public class playerMovement : MonoBehaviour
     // Start is called before the first frame update
     [Header("Particle Layer")]
     private Rigidbody2D rb;
+    private Animator anim;
+    private SpriteRenderer sprite;
 
     [Header("Movement Layer")]
     public float speed = 10;
@@ -13,6 +15,8 @@ public class playerMovement : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     [Range(1, 50)]
     public float jumpVelocity;
+
+    private float x = 0f;
 
     [Header("Ground Layer")]
     public LayerMask groundLayer;
@@ -23,9 +27,14 @@ public class playerMovement : MonoBehaviour
 
 
 
+
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -40,26 +49,42 @@ public class playerMovement : MonoBehaviour
         betterJump();
         walk(dir);
 
-        if(x > 0 && !facingRight)
+
+        if (x > 0f )
         {
-            Flip();
+            anim.SetBool("isWalking", true);
+            sprite.flipX = true;
+
         }
-        if(x < 0 && facingRight)
+        else if(x < 0f )
         {
-            Flip();
+            anim.SetBool("isWalking", true);
+            sprite.flipX = false;
+        }
+        else{
+            anim.SetBool("isWalking", false);
         }
     }
 
     private void walk(Vector2 dir)
     {
-        rb.velocity = (new Vector2(dir.x * speed, rb.velocity.y));        
+        rb.velocity = (new Vector2(dir.x * speed, rb.velocity.y));
+        
     }
     private void jump()
     {
         if (Input.GetButtonDown("Jump") && onGround)
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpVelocity;
-
+            anim.SetTrigger("takeOf");
+        }
+        if (onGround == false)
+        {
+            anim.SetBool("isJumping", true);
+        }
+        else if (onGround == true)
+        {
+            anim.SetBool("isJumping", false);
         }
     }
     private void betterJump()
@@ -82,6 +107,8 @@ public class playerMovement : MonoBehaviour
 
         facingRight = !facingRight;
     }
+
+
 
     private void OnDrawGizmos()
     {
