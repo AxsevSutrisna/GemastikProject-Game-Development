@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Sign : MonoBehaviour
 {
 
-    public GameObject UIBorobudur;
+    public GameObject UI;
     public bool playerInRange; 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class Sign : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F) && playerInRange)
         {
-            UIBorobudur.SetActive(true);
+            UI.SetActive(true);
         }
     }
 
