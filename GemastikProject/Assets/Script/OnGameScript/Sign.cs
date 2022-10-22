@@ -10,6 +10,11 @@ public class Sign : MonoBehaviour
     public GameObject UI;
     public bool playerInRange; 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
     void Start()
     {
         
@@ -20,6 +25,7 @@ public class Sign : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F) && playerInRange)
         {
+            Time.timeScale = 0;
             UI.SetActive(true);
         }
     }
@@ -38,5 +44,11 @@ public class Sign : MonoBehaviour
         {
             playerInRange = false;
         }
+    }
+    
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        UI.SetActive(false);
     }
 }

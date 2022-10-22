@@ -24,7 +24,6 @@ public class PlayerManager : MonoBehaviour
         {
             Time.timeScale = 0;
             gameOverScreen.SetActive(true);
-
         }
 
     }
