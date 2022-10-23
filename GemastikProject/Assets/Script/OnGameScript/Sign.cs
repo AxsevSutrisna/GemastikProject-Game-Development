@@ -8,6 +8,8 @@ public class Sign : MonoBehaviour
 {
 
     public GameObject UI;
+    public GameObject Panel;
+
     public bool playerInRange; 
     // Start is called before the first frame update
 
@@ -23,9 +25,8 @@ public class Sign : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F) && playerInRange)
+        if(playerInRange)
         {
-            Time.timeScale = 0;
             UI.SetActive(true);
         }
     }
@@ -43,12 +44,19 @@ public class Sign : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            UI.SetActive(false);
         }
+    }
+
+    public void PanelUI()
+    {
+        Time.timeScale = 0;
+        Panel.SetActive(true);
     }
     
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        UI.SetActive(false);
+        Panel.SetActive(false);
     }
 }
