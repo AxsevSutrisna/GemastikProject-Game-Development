@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 public class playerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -15,8 +16,6 @@ public class playerMovement : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     [Range(1, 50)]
     public float jumpVelocity;
-
-    private float x = 0f;
 
     [Header("Ground Layer")]
     public LayerMask groundLayer;
@@ -42,8 +41,8 @@ public class playerMovement : MonoBehaviour
     {
         onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) 
             || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer);
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        float x = CrossPlatformInputManager.GetAxis("Horizontal");
+        float y = CrossPlatformInputManager.GetAxis("Vertical");
         Vector2 dir = new Vector2(x, y);
         jump();
         betterJump();
@@ -73,7 +72,7 @@ public class playerMovement : MonoBehaviour
     }
     private void jump()
     {
-        if (Input.GetButtonDown("Jump") && onGround)
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && onGround)
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpVelocity;
             anim.SetTrigger("takeOf");
@@ -94,7 +93,7 @@ public class playerMovement : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) *Time.deltaTime;
 
         }
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        else if (rb.velocity.y > 0 && !CrossPlatformInputManager.GetButton("Jump"))
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
