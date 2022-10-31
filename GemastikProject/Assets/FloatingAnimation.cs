@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FloatingAnimation : MonoBehaviour
 {
-    public float amp;
-    public float freq;
+    public float amp = 0.1f;
+    public float freq = 5f;
     Vector3 initPos;
 
     private void Start()
