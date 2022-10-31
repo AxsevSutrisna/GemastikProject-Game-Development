@@ -47,7 +47,7 @@ public class playerMovement : MonoBehaviour
         jump();
         betterJump();
         walk(dir);
-
+        //Flip();
 
         if (x > 0f )
         {
@@ -98,14 +98,25 @@ public class playerMovement : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
-    void Flip()
-    {
-        Vector3 currentScale = gameObject.transform.localScale;
-        currentScale.x *= -1;
-        gameObject.transform.localScale = currentScale;
+    //void Flip()
+    //{
+    //    Vector3 currentScale = gameObject.transform.localScale;
+    //    currentScale.x *= -1;
+    //    gameObject.transform.localScale = currentScale;
 
-        facingRight = !facingRight;
-    }
+    //    facingRight = !facingRight;
+    //}
+    //private void Flip()
+    //{
+    //    // Rotate the player
+    //    if (transform.localEulerAngles.y != 180 && !facingRight)
+    //        transform.Rotate(0f, 180f, 0f);
+    //    else if (transform.localEulerAngles.y != 0 && facingRight)
+    //        transform.Rotate(0f, -180f, 0f);
+
+    //    // player flip point of attck also flip is direction
+    //    //transform.Rotate(0f, 180f, 0f);
+    //}
 
 
 
