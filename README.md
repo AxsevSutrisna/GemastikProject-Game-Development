@@ -1,2 +1,2 @@
-# GemastikProject---Game-Development
+# GemastikProject-Game-Development
 Repo Gemastik 
